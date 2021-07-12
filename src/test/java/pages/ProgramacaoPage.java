@@ -10,14 +10,14 @@ public class ProgramacaoPage {
     ChromeDriver browser = new ChromeDriver();
 
     final String url = "https://www.sky.com.br/";
-    final By btnclose = By.xpath("//div[@class='modal-header borderless']/button[@class='close']");
-    final By btnProgramacao = By.xpath("//nav[@id='main-menu']//div/ul[@class='nav navbar-nav menu-link menu-link-top']/li/a/strong[text()='Programação']");
-    final By btnPrassandoAgora = By.xpath("//*[@id=\"schedules-container\"]/div/span[text()='Passando Agora']");
-    final By titleProg = By.xpath("//div[@class='progress-bar']/../div[@class='program-schedule-content']/h2");
-    final By horaProg = By.xpath("//div[@class='progress-bar']/../div[@class='program-schedule-content']/h2//..//../div/div[@class='program-schedule-info']/div/p");
-    final By contentProgram = By.xpath("//div[@class='progress-bar']/../div[@class='program-schedule-content']");
-    final By titlemodal = By.xpath("//*[@id='modal']//div//div[@class='sky-modal-container']//div[@class='sky-modal-program-title']/h2");
-    final By horaModal = By.xpath("//*[@id='modal']//div//div[@class='sky-modal-container']//div[@class='sky-modal-program-date-time']/span");
+    final By btFecharPath = By.xpath("//div[@class='modal-header borderless']/button[@class='close']");
+    final By btProgramacaoPath = By.xpath("//nav[@id='main-menu']//div/ul[@class='nav navbar-nav menu-link menu-link-top']/li/a/strong[text()='Programação']");
+    final By btPassandoAgoraPath = By.xpath("//*[@id=\"schedules-container\"]/div/span[text()='Passando Agora']");
+    final By tituloProgramaPath = By.xpath("//div[@class='progress-bar']/../div[@class='program-schedule-content']/h2");
+    final By horaProgramaPath = By.xpath("//div[@class='progress-bar']/../div[@class='program-schedule-content']/h2//..//../div/div[@class='program-schedule-info']/div/p");
+    final By conteudoProgramaPath = By.xpath("//div[@class='progress-bar']/../div[@class='program-schedule-content']");
+    final By tituloModalPath = By.xpath("//*[@id='modal']//div//div[@class='sky-modal-container']//div[@class='sky-modal-program-title']/h2");
+    final By horaModalPath = By.xpath("//*[@id='modal']//div//div[@class='sky-modal-container']//div[@class='sky-modal-program-date-time']/span");
 
     public ProgramacaoPage() {
     }
@@ -29,34 +29,33 @@ public class ProgramacaoPage {
 
     public void fecharModal() {
         browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        browser.findElement(btnclose).click();
+        browser.findElement(btFecharPath).click();
     }
 
     public void selecionarMenuProgramacao() {
-        browser.findElement(btnProgramacao).click();
+        browser.findElement(btProgramacaoPath).click();
     }
 
     public void botaoPassandoAgora() throws InterruptedException {
-        browser.findElement(btnPrassandoAgora).click();
+        browser.findElement(btPassandoAgoraPath).click();
         Thread.sleep(2000);
     }
 
     public void selecionarProgramacaoAtual() {
-        browser.findElement(contentProgram).click();
+        browser.findElement(conteudoProgramaPath).click();
     }
 
     public void comparaTextoModal() {
-        String titleprogramText = browser.findElement(titleProg).getText();
-        String horaProgText = browser.findElement(horaProg).getText();
-        String titlemodalText = browser.findElement(titlemodal).getText();
-        String horaModalText = browser.findElement(horaModal).getText();
+        String tituloPrograma = browser.findElement(tituloProgramaPath).getText();
+        String horaPrograma = browser.findElement(horaProgramaPath).getText();
+        String tituloModal = browser.findElement(tituloModalPath).getText();
+        String horaModalText = browser.findElement(horaModalPath).getText();
 
-        Assert.assertEquals(true, titleprogramText.equals(titlemodalText));
-        Assert.assertEquals(true, horaProgText.equals(horaModalText));
+        Assert.assertEquals(true, tituloPrograma.equals(tituloModal));
+        Assert.assertEquals(true, horaPrograma.equals(horaModalText));
     }
 
     public void fecharPagina() {
         browser.close();
     }
-
 }

@@ -24,6 +24,7 @@ public class ConsultarProgramacaoAtualSteps {
     public void clicarMenuProgramacao() {
         programacao.selecionarMenuProgramacao();
     }
+
     @Quando("^selecionar o botão passando agora$")
     public void selecionarBotaoPassandoAgora() throws InterruptedException {
         programacao.botaoPassandoAgora();
