@@ -9,6 +9,7 @@ Funcionalidade: Consultar programa atual
     Dado que o usuario acesse o site da Sky
     Quando fechar a modal
     E clicar no menu programação
+    E selecionar o botão passando agora
     E selecionar a programação atual
     Entao o sistema deve exibir uma modal com as informações da programacao
 

@@ -1,4 +1,5 @@
 package steps;
+
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.it.E;
 import cucumber.api.java.it.Quando;
@@ -7,27 +8,34 @@ import pages.ProgramacaoPage;
 
 public class ConsultarProgramacaoAtualSteps {
 
-    private ProgramacaoPage programacao = new ProgramacaoPage();
+    final ProgramacaoPage programacao = new ProgramacaoPage();
 
     @Dado("^que o usuario acesse o site da Sky$")
-    public void que_o_usuario_acesse_o_site_da_Sky() throws Throwable {
+    public void acessarSiteSky() {
         programacao.abrirPagina();
     }
+
     @Quando("^fechar a modal$")
-    public void fechar_a_modal() throws Throwable {
+    public void fecharModal() {
         programacao.fecharModal();
     }
+
     @E("^clicar no menu programação$")
-    public void clicar_no_menu_programação() throws Throwable {
+    public void clicarMenuProgramacao() {
         programacao.selecionarMenuProgramacao();
     }
-    @Quando("^selecionar a programação atual$")
-    public void selecionar_a_programação_atual() throws Throwable {
-       // programacao.selecionarProgramacaoAtual();
-        programacao.verificandoProgramacaoAtual();
+    @Quando("^selecionar o botão passando agora$")
+    public void selecionarBotaoPassandoAgora() throws InterruptedException {
+        programacao.botaoPassandoAgora();
     }
+
+    @Quando("^selecionar a programação atual$")
+    public void selecionarProgramacaoAtual() {
+        programacao.selecionarProgramacaoAtual();
+    }
+
     @Entao("^o sistema deve exibir uma modal com as informações da programacao$")
-    public void compara_dados_da_programacao_atual() throws Throwable {
+    public void comparaDadosModaleProgramacaoAtual() {
         programacao.comparaTextoModal();
         programacao.fecharPagina();
     }
