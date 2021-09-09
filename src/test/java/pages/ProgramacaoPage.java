@@ -7,7 +7,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class ProgramacaoPage {
-    ChromeDriver browser = new ChromeDriver();
+
+    ChromeDriver browser = null;
 
     final String url = "https://www.sky.com.br/";
     final By btFecharPath = By.xpath("//div[@class='modal-header borderless']/button[@class='close']");
@@ -23,6 +24,9 @@ public class ProgramacaoPage {
     }
 
     public void abrirPagina() {
+
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/webdriver/chromedriver.exe");
+        browser = new ChromeDriver();
         browser.manage().window().maximize();
         browser.get(url);
     }
@@ -56,6 +60,6 @@ public class ProgramacaoPage {
     }
 
     public void fecharPagina() {
-        browser.close();
+        browser.quit();
     }
 }
